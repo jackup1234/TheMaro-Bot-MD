@@ -11,10 +11,10 @@ global.botnumber = ""
 global.confirmCode = ""
 
 global.owner = [
-  ['5219992095479', '👑 Mystic - Creador 👑', true],
-  ['51940617554', '💫 Mystic - Collaborator 2 💫', true],
-  ['51996089079', '💫 Mystic - Collaborator 3 💫', true],
-  ['5218442286089', '💫 Mystic - Collaborator 4 💫', true],
+  ['201208386317', '👑 Mystic - Creador 👑', true],
+  ['201119571169', '💫 Mystic - Collaborator 2 💫', true],
+  ['201080898312', '💫 Mystic - Collaborator 3 💫', true],
+  ['994400324930', '💫 Mystic - Collaborator 4 💫', true],
   ['50246028932', '💫 Mystic - Collaborator 5 💫', true],
   ['5212412377467', '💫 Mystic - Collaborator 6 💫', true],
   ['5215517489568', '💫 Mystic - Rey Endymion 💫', false],
@@ -46,15 +46,15 @@ global.owner = [
   ['5492964650915']
 ];
 
-global.suittag = ['5219993404349'];
-global.prems = ['51995386439'];
+global.suittag = ['201208386317'];
+global.prems = ['201208386317'];
 
 global.packname = 'Sticker';
-global.author = 'The Mystic - Bot';
-global.wm = 'The Mystic - Bot';
-global.titulowm = 'The Mystic - Bot';
-global.titulowm2 = `The Mystic - Bot`
-global.igfg = 'The Mystic - Bot';
+global.author = '𝑇𝐻𝐸 𝑀𝐴𝑅𝛩 𝐵𝛩𝑇';
+global.wm = '𝑇𝐻𝐸 𝑀𝐴𝑅𝛩 𝐵𝛩𝑇';
+global.titulowm = '𝑇𝐻𝐸 𝑀𝐴𝑅𝛩 𝐵𝛩𝑇';
+global.titulowm2 = `𝑇𝐻𝐸 𝑀𝐴𝑅𝛩 𝐵𝛩𝑇`
+global.igfg = '𝑇𝐻𝐸 𝑀𝐴𝑅𝛩 𝐵𝛩𝑇';
 global.wait = '*_[ ⏳ ] Cargando..._*';
 
 global.imagen1 = fs.readFileSync('./Menu2.jpg');
@@ -80,15 +80,15 @@ global.año = d.toLocaleDateString('es', {year: 'numeric'});
 global.tiempo = d.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true});
 //* ****************************
 global.wm2 = `${dia} ${fecha}\nThe Mystic - Bot`;
-global.gt = 'The Mystic - Bot';
-global.mysticbot = 'The Mystic - Bot';
+global.gt = '𝑇𝐻𝐸 𝑀𝐴𝑅𝛩 𝐵𝛩𝑇';
+global.mysticbot = '𝑇𝐻𝐸 𝑀𝐴𝑅𝛩 𝐵𝛩𝑇';
 global.channel = 'https://whatsapp.com/channel/0029Vaein6eInlqIsCXpDs3y';
 global.md = 'https://github.com/BrunoSobrino/TheMystic-Bot-MD';
 global.mysticbot = 'https://github.com/BrunoSobrino/TheMystic-Bot-MD';
 global.waitt = '*_[ ⏳ ] Cargando..._*';
 global.waittt = '*_[ ⏳ ] Cargando..._*';
 global.waitttt = '*_[ ⏳ ] Cargando..._*';
-global.nomorown = '5219993404349';
+global.nomorown = '201208386317';
 global.pdoc = ['application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-excel', 'application/msword', 'application/pdf', 'text/rtf'];
 global.cmenut = '❖––––––『';
 global.cmenub = '┊✦ ';
