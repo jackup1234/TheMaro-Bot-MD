@@ -1,20 +1,17 @@
+let handler = async (m, { conn, usedPrefix, text, command }) => {
+    let hash = text
+    if (m.quoted && m.quoted.fileSha256) hash = m.quoted.fileSha256.toString('hex')
+    if (!hash) throw `Tidak ada hash`
+    let sticker = global.db.data.sticker
+    if (sticker[hash] && sticker[hash].locked) throw 'Kamu tidak memiliki izin untuk menghapus perintah stiker ini'
+    delete sticker[hash]
+    m.reply(`Berhasil!`)
+}
 
 
-const handler = async (m, {conn, usedPrefix, text, command}) => {
-  const datas = global
-  const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
-  const tradutor = _translate.plugins.cmd_del
+handler.help = ['cmd'].map(v => 'del' + v + ' <teks>')
+handler.tags = ['database', 'premium']
+handler.command = ['delcmd']
+handler.premium = true
 
-
-  let hash = text;
-  if (m.quoted && m.quoted.fileSha256) hash = m.quoted.fileSha256.toString('hex');
-  if (!hash) throw `*${tradutor.texto1} ${usedPrefix}listcmd*`;
-  const sticker = global.db.data.sticker;
-  if (sticker[hash] && sticker[hash].locked) throw `*${tradutor.texto2}*`;
-  delete sticker[hash];
-  m.reply(`*${tradutor.texto3}*`);
-};
-handler.command = ['delcmd'];
-handler.rowner = true;
-export default handler;
+export default handler
