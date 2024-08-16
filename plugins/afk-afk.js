@@ -1,19 +1,27 @@
+import fs from 'fs'
+import fetch from 'node-fetch'
+let handler = async (m, { text }) => {
+let name = m.pushName || conn.getName(m.sender)
 
+let user = global.db.data.users[m.sender]
+let wibu = `${global.hwaifu}`
 
+let thumb = await(await fetch(wibu)).buffer()
+user.afk = + new Date
+user.afkReason = text
+ conn.sendButtonDoc(m.chat, `${conn.getName(m.sender)} Sᴇᴅᴀɴɢ Aғᴋ Dᴇɴɢᴀɴ Aʟᴀsᴀɴ ⬋`, `⬕ ${text ? ': ' + text : ''}` , 'Jangan Ganggu Ya', 'huuuuu', m,  { contextInfo: { externalAdReply: { showAdAttribution: true,
+        mediaUrl: "https://facebook.com/sadtime098",
+        mediaType: "VIDEO",
+        description: "https://facebook.com/sadtime098",
+        title: 'Simple Bot Esm',
+        body: wm,
+        thumbnail: thumb,
+        sourceUrl: sgc
+    }
+    } })
+            }
+handler.help = ['afk [alasan]']
+handler.tags = ['main']
+handler.command = /^afk$/i
 
-const handler = async (m, {text}) => {
-  const datas = global
-  const idioma = datas.db.data.users[m.sender].language
-  const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
-  const tradutor = _translate.plugins.afk_afk
-
-  const user = global.db.data.users[m.sender];
-  user.afk = + new Date;
-  user.afkReason = text;
-  m.reply(`${tradutor.texto1[0]} ${conn.getName(m.sender)} ${tradutor.texto1[1]} ${text ? ': ' + text : ''}*
-`);
-};
-handler.help = ['afk [alasan]'];
-handler.tags = ['main'];
-handler.command = /^afk$/i;
-export default handler;
+export default handler

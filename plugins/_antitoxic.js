@@ -1,40 +1,27 @@
-// TheMystic-Bot-MD@BrunoSobrino - _antitoxic.js
 
- // Para configurar o idioma, na raiz do projeto altere o arquivo config.json
-  // Para configurar el idioma, en la raíz del proyecto, modifique el archivo config.json.
-  // To set the language, in the root of the project, modify the config.json file.
+const isToxic = /anj(k|g)|ajn?(g|k)|a?njin(g|k)|bajingan|b(a?n)?gsa?t|ko?nto?l|me?me?(k|q)|pe?pe?(k|q)|meki|titi(t|d)|pe?ler|tetek|toket|ngewe|go?blo?k|to?lo?l|idiot|(k|ng)e?nto?(t|d)|jembut|bego|dajj?al|janc(u|o)k|pantek|puki ?(mak)?|kimak|babi|anj|bangsad|bgsd|peler|pantek|ngentod|kontol|ngentd|ngntod|koncol|kncl|kncol|kampang|lonte|col(i|mek?)|pelacur|henceu?t|nigga|fuck|dick|bitch|tits|bastard|asshole|a(su|sw|syu)/i // tambahin sendiri
 
-
-const toxicRegex = /\b(puto|puta|rata|estupido|imbecil|rctmre|mrd|verga|vrga|maricon)\b/i;
-
-export async function before(m, {isAdmin, isBotAdmin, isOwner}) {
-  const datas = global
-    const idioma = datas.db.data.users[m.sender].language
-    const _translate = JSON.parse(fs.readFileSync(`./language/${idioma}.json`))
-    const tradutor = _translate.plugins._antitoxic
-
-  if (m.isBaileys && m.fromMe) {
-    return !0;
-  }
-  if (!m.isGroup) {
-    return !1;
-  }
-  const user = global.db.data.users[m.sender];
-  const chat = global.db.data.chats[m.chat];
-  const bot = global.db.data.settings[mconn.conn.user.jid] || {};
-  const isToxic = toxicRegex.exec(m.text);
-
-  if (isToxic && chat.antiToxic && !isOwner && !isAdmin) {
-    user.warn += 1;
-    if (!(user.warn >= 5)) await m.reply(`${tradutor.texto1}` + `${user.warn == 1 ? `@${m.sender.split`@`[0]}` : `@${m.sender.split`@`[0]}`}, ${tradutor.texto1_1}"${isToxic}" ${tradutor.texto1_2} ${user.warn}/5` + '*', false, {mentions: [m.sender]});
-  }
-
-  if (user.warn >= 5) {
-    user.warn = 0;
-    await m.reply(`${tradutor.texto2} @${m.sender.split('@')[0]}, ${tradutor.texto2_1}`, false, {mentions: [m.sender]});
-    user.banned = true;
-    await mconn.conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
-    // await this.updateBlockStatus(m.sender, 'block')
-  }
-  return !1;
+export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBotAdmin }) {
+    if (m.isBaileys && m.fromMe)
+        return !0
+    if (!m.isGroup) return !1
+    let chat = global.db.data.chats[m.chat]
+    let name = conn.getName(m.sender)
+    let bot = global.db.data.settings[this.user.jid] || {}
+    const isAntiToxic = isToxic.exec(m.text)
+    let hapus = m.key.participant
+    let bang = m.key.id
+    
+    if (chat.antiToxic && isAntiToxic) {
+        await conn.sendButton(m.chat, `*Terdeteksi ${name} Telah Mengirim Kata-Kata Aneh!*\n\n_“Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam” (HR. al-Bukhari dan Muslim)._ ${isBotAdmin ? '' : '\n\n_Bot bukan atmin_'}`, author, ['Owner', '/owner kontak'], m)
+        if (isBotAdmin && bot.restrict) {
+            // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+ /*   global.db.data.users[m.sender].warn += 1
+    global.db.data.users[m.sender].banned = true*/
+    return conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: hapus }})
+        } else if (!bot.restrict) return m.reply('Semoga harimu suram!')
+    }
+    return !0
 }
+
+export const disable = true
